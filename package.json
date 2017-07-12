@@ -1,0 +1,41 @@
+{
+  "name": "toa-logging",
+  "description": "HTTP request logging middleware for Toa.",
+  "authors": [
+    "Yan Qing <admin@zensh.com>"
+  ],
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:toajs/toa-logging.git"
+  },
+  "engines": {
+    "node": ">= 4.5.0"
+  },
+  "homepage": "https://github.com/toajs/toa-logging",
+  "keywords": [
+    "toa",
+    "toa-module",
+    "toa-middleware",
+    "logging",
+    "log",
+    "logger"
+  ],
+  "dependencies": {
+    "ilog": "^1.1.1"
+  },
+  "devDependencies": {
+    "standard": "^10.0.2",
+    "supertest": "^3.0.0",
+    "tman": "^1.7.0",
+    "toa": "^3.0.1"
+  },
+  "scripts": {
+    "test": "standard && tman"
+  },
+  "files": [
+    "README.md",
+    "index.js"
+  ]
+}
