@@ -43,6 +43,7 @@ function noOp () { return false }
 function defaultInit (log) {} // do nothing~
 
 function defaultConsume (log) {
+  log.status = this.status
   ilog.info(log) // write the log by ilog.info
 }
 

@@ -17,7 +17,8 @@ const logging = require('toa-logging')
 const app = new Toa()
 app.use(logging())
 app.use(function () {
-  this.body = 'Hello!'
+  // logging middleware will add a Log instance to context.state
+  this.body = this.state.log
 })
 
 app.listen(3000)
@@ -31,7 +32,7 @@ const logging = require('toa-logging')
 
 ### logging([options])
 
-Create a new logging middleware function with `options`.
+Create a new logging middleware function with `options`. logging middleware will add a Log instance to `context.state`, you can append key/value to the log like `this.state.log.someKey = someValue`.
 
 #### options.skipper
 
@@ -48,7 +49,8 @@ logging({
 
 #### options.init
 
-Set a init function that will run at the begin, default to:
+Set a init function that will run at the begin. This function
+will be called as `init.call(context, context.state.log)`. Default to:
 
 ```js
 function defaultInit (log) {} // do nothing~
@@ -56,10 +58,12 @@ function defaultInit (log) {} // do nothing~
 
 #### options.consume
 
-Set a consume function that will run at the end, default to:
+Set a consume function that will run at the end. This function
+will be called as `consume.call(context, context.state.log)`. Default to:
 
 ```js
 function defaultConsume (log) {
+  log.status = this.status
   ilog.info(log) // write the log by ilog.info
 }
 ```
