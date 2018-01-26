@@ -55,6 +55,8 @@ class Log {
     this.method = ctx.method
     this.url = ctx.originalUrl
     this.protocol = ctx.protocol
+    this.origin = ctx.get('origin')
+    this.referer = ctx.get('referer')
     this.userAgent = ctx.get('user-agent')
   }
 }
